@@ -1,0 +1,11 @@
+import { KeyOf } from './types';
+export declare function identity<T>(x: T): T;
+export declare function noop(): void;
+export declare function arrayReplace<T>(a: T[], b: ReadonlyArray<T>): void;
+export declare function arrayRemove<T>(a: T[], fn: (x: T, i: number) => boolean): void;
+export declare function arrayToObject<K extends string, V>(arr: ReadonlyArray<[K, V]>): Record<K, V>;
+export declare function objectMap<T extends {}, K extends KeyOf<T>, R>(obj: T, fn: (v: T[K], k: K) => R): Record<K, R>;
+export declare function sid(): () => string;
+declare type KeyGetFn<T> = (x: T) => string;
+export declare function keyGetter<T>(k?: string | number | KeyGetFn<T>): KeyGetFn<T>;
+export {};

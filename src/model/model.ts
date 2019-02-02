@@ -123,7 +123,7 @@ class FormModel<T> extends Changeable<ModelErrorsKeys<T>> implements IForm<T> {
 
     try {
       const errors = await fn(values)
-      this._setErrors(errors)
+      this._setErrors(errors || {} as ModelErrors<T>)
     }
     finally {
       this.isSubmitting = false
@@ -179,7 +179,7 @@ class FormModel<T> extends Changeable<ModelErrorsKeys<T>> implements IForm<T> {
     if (this.hasErrors || !this.validator) return
 
     const errors = this.validator(this.values)
-    this._setErrors(errors)
+    this._setErrors(errors || {} as ModelErrors<T>)
   }
 
   private _setErrors(errors: ModelErrors<T>) {

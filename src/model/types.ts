@@ -108,5 +108,6 @@ export type ModelErrorsKeys<T> = KeyOf<T> | '_'
 export type ModelErrors<T> = Readonly<Partial<Record<ModelErrorsKeys<T>, ValidationResult>>>
 export type ModelValues<T> = DeepReadonly<T> //TODO + .changed ?
 
-export type ModelValidator<T> = (values: ModelValues<T>) => ModelErrors<T>
-export type AsyncModelValidator<T> = (values: ModelValues<T>) => Promise<ModelErrors<T>>
+export type ModelValidationResult<T> = ModelErrors<T> | undefined
+export type ModelValidator<T> = (values: ModelValues<T>) => ModelValidationResult<T>
+export type AsyncModelValidator<T> = (values: ModelValues<T>) => Promise<ModelValidationResult<T>>

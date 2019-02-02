@@ -76,6 +76,7 @@ export interface IFormField<T> extends IChangeable {
 export declare type ModelErrorsKeys<T> = KeyOf<T> | '_';
 export declare type ModelErrors<T> = Readonly<Partial<Record<ModelErrorsKeys<T>, ValidationResult>>>;
 export declare type ModelValues<T> = DeepReadonly<T>;
-export declare type ModelValidator<T> = (values: ModelValues<T>) => ModelErrors<T>;
-export declare type AsyncModelValidator<T> = (values: ModelValues<T>) => Promise<ModelErrors<T>>;
+export declare type ModelValidationResult<T> = ModelErrors<T> | undefined;
+export declare type ModelValidator<T> = (values: ModelValues<T>) => ModelValidationResult<T>;
+export declare type AsyncModelValidator<T> = (values: ModelValues<T>) => Promise<ModelValidationResult<T>>;
 export {};
